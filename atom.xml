@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-09T07:21:34.619Z</updated>
+  <updated>2019-01-09T09:55:49.383Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>创建对象的几种方式</title>
+    <link href="http://yoursite.com/2019/01/09/object/"/>
+    <id>http://yoursite.com/2019/01/09/object/</id>
+    <published>2019-01-09T07:32:12.000Z</published>
+    <updated>2019-01-09T09:55:49.383Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Object构造函数和字面量"><a href="#Object构造函数和字面量" class="headerlink" title="Object构造函数和字面量"></a>Object构造函数和字面量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var person=new Object()</span><br><span class="line">person.age=24</span><br><span class="line">person.sex=&apos;man&apos;</span><br><span class="line">var  perosn=&#123;</span><br><span class="line">    age:24,</span><br><span class="line">    sex:&apos;man&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(age,name)&#123;</span><br><span class="line">    var o=new Object()</span><br><span class="line">    o.age=age</span><br><span class="line">    o.name=name</span><br><span class="line">    o.code=function()&#123;</span><br><span class="line">        console.log(&apos;hello world&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    return o</span><br><span class="line">&#125;</span><br><span class="line">var person1=createPerson(24,&apos;wwy&apos;)</span><br><span class="line">var person2=createPerson(24,&apos;tf&apos;)</span><br></pre></td></tr></table></figure><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(age,name)&#123;</span><br><span class="line">    this.age=age</span><br><span class="line">    this.name=name</span><br><span class="line">    this.code=code</span><br><span class="line">&#125;</span><br><span class="line">function code()&#123;</span><br><span class="line">    console.log(&apos;hello world&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var person1=new Person(24,&apos;wwy&apos;)</span><br><span class="line">var person2=new Person(24,&apos;tf&apos;)</span><br></pre></td></tr></table></figure><p><div class="tip"><br>    每个方法都在每个实例上重新创建<br>    在使用构造函数时需要把function放到全局<br>    这样就没有封装性—原型模式(但是现在都不怎么用就省略)<br>    person1.code === person2.code =&gt; false<br></div></p><h2 id="原型模式-构造模式"><a href="#原型模式-构造模式" class="headerlink" title="原型模式+构造模式"></a>原型模式+构造模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Person(age,name)&#123;</span><br><span class="line">    this.age=age</span><br><span class="line">    this.name=name</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">    constructor:Person,</span><br><span class="line">    sayName:function()&#123;</span><br><span class="line">        console.log(this.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    cry:function()&#123;</span><br><span class="line">    console.log(&apos;hello world&apos;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person1=new Person(24,&apos;wwy&apos;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Object构造函数和字面量&quot;&gt;&lt;a href=&quot;#Object构造函数和字面量&quot; class=&quot;headerlink&quot; title=&quot;Object构造函数和字面量&quot;&gt;&lt;/a&gt;Object构造函数和字面量&lt;/h2&gt;&lt;figure class=&quot;highlight 
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>webpack</title>
